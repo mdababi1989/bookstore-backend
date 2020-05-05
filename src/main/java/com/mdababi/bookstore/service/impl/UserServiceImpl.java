@@ -1,6 +1,7 @@
 package com.mdababi.bookstore.service.impl;
 
 import com.mdababi.bookstore.domain.User;
+import com.mdababi.bookstore.domain.security.Role;
 import com.mdababi.bookstore.domain.security.UserRole;
 import com.mdababi.bookstore.repository.RoleRepository;
 import com.mdababi.bookstore.repository.UserRepository;
@@ -28,9 +29,10 @@ public class UserServiceImpl implements UserService {
             LOG.info("User with username {} already exist. Nothing will be done", user.getUsername());
         } else {
             for (UserRole userRole : userRoles) {
-                roleRepository.save(userRole.getRole());
+                Role localRole = roleRepository.save(userRole.getRole());
+                user.getUserRoles().add(new UserRole(user, localRole));
             }
-            user.getUserRoles().addAll(userRoles);
+            //user.getUserRoles().addAll(userRoles);
             localUser = userRepository.save(user);
         }
         return localUser;
