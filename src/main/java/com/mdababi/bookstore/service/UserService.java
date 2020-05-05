@@ -1,0 +1,10 @@
+package com.mdababi.bookstore.service;
+
+import com.mdababi.bookstore.domain.User;
+import com.mdababi.bookstore.domain.security.UserRole;
+
+import java.util.Set;
+
+public interface UserService {
+    User createUser(User user, Set<UserRole> userRoles);
+}
