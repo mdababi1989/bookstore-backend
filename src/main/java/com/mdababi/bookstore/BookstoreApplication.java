@@ -15,8 +15,12 @@ import java.util.Set;
 
 @SpringBootApplication
 public class BookstoreApplication implements CommandLineRunner {
-    @Autowired
     UserService userService;
+
+    @Autowired
+    public BookstoreApplication(UserService userService) {
+        this.userService = userService;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(BookstoreApplication.class, args);
@@ -28,8 +32,8 @@ public class BookstoreApplication implements CommandLineRunner {
         user1.setFirstName("mohamed");
         user1.setEmail("mdababi@gmail.com");
         user1.setLastName("dababi");
-        user1.setUsername("mdababi1989");
-        user1.setPassword(SecurityUtility.passwordEncoder().encode("azerty"));
+        user1.setUsername("a");
+        user1.setPassword(SecurityUtility.passwordEncoder().encode("a"));
         user1.setEnabled(true);
         Set<UserRole> userRoles = new HashSet<>();
         Role role1 = new Role();
