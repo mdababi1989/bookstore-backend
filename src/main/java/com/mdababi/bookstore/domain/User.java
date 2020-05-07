@@ -74,4 +74,18 @@ public class User implements Serializable, UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", enabled=" + enabled +
+                '}';
+    }
 }

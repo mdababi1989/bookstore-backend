@@ -23,18 +23,20 @@ public class BookstoreApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args){
         User user1 = new User();
         user1.setFirstName("mohamed");
         user1.setEmail("mdababi@gmail.com");
         user1.setLastName("dababi");
         user1.setUsername("mdababi1989");
         user1.setPassword(SecurityUtility.passwordEncoder().encode("azerty"));
+        user1.setEnabled(true);
         Set<UserRole> userRoles = new HashSet<>();
         Role role1 = new Role();
         role1.setName("ROLE_USER");
         role1.setRoleId(1);
         userRoles.add(new UserRole(user1, role1));
+
         userService.createUser(user1, userRoles);
         userRoles.clear();
 
