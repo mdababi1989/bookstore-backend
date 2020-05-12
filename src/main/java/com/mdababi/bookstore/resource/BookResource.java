@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -34,6 +35,20 @@ public class BookResource {
     @PostMapping("/add")
     public Book addBook(@RequestBody Book book) {
         return bookService.save(book);
+    }
+
+    @PutMapping("/update")
+    public Book updateBook(@RequestBody Book book) {
+        return bookService.save(book);
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity deleteBook(@RequestBody String id) {
+        bookService.removeBook(Long.parseLong(id));
+        String fileName = id + ".png";
+        fileStorageService.removeFile(fileName);
+
+        return new ResponseEntity("Remove Success!", HttpStatus.OK);
     }
 
     @PostMapping("/add/image")
@@ -82,36 +97,8 @@ public class BookResource {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION)
                 .body(resource);
     }
 }
 
-
-
-/*
-    @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
-        // Load file as Resource
-        Resource resource = fileStorageService.loadFileAsResource(fileName);
-
-        // Try to determine file's content type
-        String contentType = null;
-        try {
-            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException ex) {
-            logger.info("Could not determine file type.");
-        }
-
-        // Fallback to the default content type if type could not be determined
-        if(contentType == null) {
-            contentType = "application/octet-stream";
-        }
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
-    }
-}
-*/

@@ -26,7 +26,6 @@ public class LoginResource {
         int portNumber = request.getRemotePort();
         System.out.println(remoteHost+":"+portNumber);
         return Collections.singletonMap("token", session.getId());
-
     }
 
     @RequestMapping("/checkSession")
