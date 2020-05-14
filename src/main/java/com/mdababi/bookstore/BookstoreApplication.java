@@ -2,9 +2,7 @@ package com.mdababi.bookstore;
 
 import com.mdababi.bookstore.config.FileStorageProperties;
 import com.mdababi.bookstore.config.SecurityUtility;
-import com.mdababi.bookstore.domain.User;
 import com.mdababi.bookstore.domain.security.Role;
-import com.mdababi.bookstore.domain.security.UserRole;
 import com.mdababi.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +12,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import java.util.HashSet;
 import java.util.Set;
+
+//https://bezkoder.com/angular-spring-boot-jwt-auth/
+//https://bezkoder.com/spring-boot-jwt-authentication/
 
 @SpringBootApplication
 @EnableConfigurationProperties({

@@ -30,6 +30,7 @@ public class LoginResource {
 
     @RequestMapping("/checkSession")
     public ResponseEntity checkSession(){
+        System.out.println("checked-------------------------------------------------------------------------------");
         return new ResponseEntity("Session active!", HttpStatus.OK);
     }
 

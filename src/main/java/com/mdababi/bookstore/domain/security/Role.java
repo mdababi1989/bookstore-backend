@@ -16,10 +16,10 @@ public class Role implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     private long roleId;
-    private String name;
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
-    private Set<UserRole > userRoles = new HashSet<>();
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ERole name;
 
     public Role(){}
 }
