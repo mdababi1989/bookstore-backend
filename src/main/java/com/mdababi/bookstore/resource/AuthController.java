@@ -2,6 +2,10 @@ package com.mdababi.bookstore.resource;
 
 import com.mdababi.bookstore.config.JwtUtils;
 import com.mdababi.bookstore.domain.UserDetailsImpl;
+import com.mdababi.bookstore.domain.reqRes.JwtResponse;
+import com.mdababi.bookstore.domain.reqRes.LoginRequest;
+import com.mdababi.bookstore.domain.reqRes.MessageResponse;
+import com.mdababi.bookstore.domain.reqRes.SignupRequest;
 import com.mdababi.bookstore.domain.security.ERole;
 import com.mdababi.bookstore.domain.security.Role;
 import com.mdababi.bookstore.domain.security.User;
@@ -55,7 +59,7 @@ public class AuthController {
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
-		return ResponseEntity.ok(new JwtResponse(jwt, 
+		return ResponseEntity.ok(new JwtResponse(jwt,
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
 												 roles));

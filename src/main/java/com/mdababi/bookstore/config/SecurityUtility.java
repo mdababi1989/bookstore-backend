@@ -11,12 +11,10 @@ import java.util.Random;
 public class SecurityUtility {
     private static final String SALT = "salt";
 
-    @Bean
     public static BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));
     }
 
-    @Bean
     public static String randomPassword(){
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();

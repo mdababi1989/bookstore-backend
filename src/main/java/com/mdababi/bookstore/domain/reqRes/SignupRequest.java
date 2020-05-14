@@ -1,4 +1,4 @@
-package com.mdababi.bookstore.resource;
+package com.mdababi.bookstore.domain.reqRes;
 
 import lombok.Getter;
 

@@ -3,9 +3,9 @@ package com.mdababi.bookstore.service.impl;
 import com.mdababi.bookstore.domain.UserDetailsImpl;
 import com.mdababi.bookstore.domain.security.User;
 import com.mdababi.bookstore.repository.UserRepository;
-import com.mdababi.bookstore.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 

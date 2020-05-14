@@ -1,6 +1,7 @@
 package com.mdababi.bookstore.domain.security;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -37,4 +39,8 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
     }
+
+    public User() {}
+
+
 }
